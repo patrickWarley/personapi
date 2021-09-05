@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Phone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

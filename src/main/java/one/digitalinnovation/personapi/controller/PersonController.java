@@ -1,8 +1,8 @@
 package one.digitalinnovation.personapi.controller;
 
-import one.digitalinnovation.personapi.dto.PersonDTO;
+import lombok.AllArgsConstructor;
+import one.digitalinnovation.personapi.dto.request.PersonDTO;
 import one.digitalinnovation.personapi.dto.response.MessageResponseDTO;
-import one.digitalinnovation.personapi.entity.Person;
 import one.digitalinnovation.personapi.exception.PersonNotFoundException;
 import one.digitalinnovation.personapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +14,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/people")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonController {
     private PersonService personService;
 
-    @Autowired
-    public PersonController(PersonService personService){
-        this.personService=personService;
-    }
+    //Using @AllArgsConstructor(onConstructor = @__(@Autowired))
+    //removes the necessity of creating the method below. Why is it usefull
+    //imagine that you have 10 services, or 20 the constructor would get really big
+//    @Autowired
+//    public PersonController(PersonService personService){
+//        this.personService=personService;
+//    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
